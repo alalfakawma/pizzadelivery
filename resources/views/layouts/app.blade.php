@@ -23,8 +23,15 @@
 <body>
     <div id="app">
         @include('_includes._navbar')
-        <div class="container">
-            @yield('content')
+        <div class="columns">
+            @if (Route::is('dashboard.*'))
+                @include('_includes._dashboard_menu')
+            @endif
+            <div class="column">
+                <div class="container p-t-10">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </div>
 </body>

@@ -967,7 +967,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(36);
+module.exports = __webpack_require__(37);
 
 
 /***/ }),
@@ -985,15 +985,7 @@ __webpack_require__(11);
 
 window.Vue = __webpack_require__(33);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-var app = new Vue({
-  el: '#app'
-});
+__webpack_require__(36);
 
 /***/ }),
 /* 11 */
@@ -30302,6 +30294,31 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 /* 36 */
+/***/ (function(module, exports) {
+
+var app = new Vue({
+    el: '#app',
+    methods: {
+        toggleSubmenu: function toggleSubmenu(e) {
+            var el = e.currentTarget;
+            var ul = el.nextElementSibling;
+            if (ul) {
+                if (ul.classList.contains('is-hidden')) {
+                    ul.classList.remove('is-hidden'); // Show it
+                    if (!el.classList.contains('is-active')) {
+                        el.classList.add('is-active');
+                    }
+                } else {
+                    ul.classList.add('is-hidden'); // Hide it
+                    el.classList.remove('is-active');
+                }
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 37 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

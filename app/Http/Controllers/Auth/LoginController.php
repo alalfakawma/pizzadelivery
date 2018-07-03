@@ -30,15 +30,15 @@ class LoginController extends Controller
 
     /**
      * Once the user is authenticated
-     * @return \Illuminate\Support\Facades\Redirect
+     * @return \Illuminate\Http\Response
      */
     public function authenticated() {
         if (Auth::user()->hasRole(['superadmin', 'admin'])) {
-            return redirect('/dashboard');
+            return redirect()->route('dashboard.overview');
         } else if (Auth::user()->hasRole('customer')) {
             return redirect('/');
         } else if (Auth::user()->hasRole('employee')) {
-            return redirect('/dashboard/orders');
+            return redirect()->route('dashboard.orders');
         }
     }
 

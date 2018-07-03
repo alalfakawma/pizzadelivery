@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="panel">
-    <div class="panel-heading">
-        <div class="title is-6 has-text-primary">
-            Welcome! {{ (Auth::check()) ? Auth::user()->username : "" }}
+    @auth
+        <div class="panel-heading">
+            <div class="title is-6 has-text-primary">
+                Welcome!
+            </div>
         </div>
-    </div>
-    @if (Auth::check())
         <div class="has-text-success">
             You are logged in!
         </div>
@@ -15,6 +15,6 @@
         <div class="has-text-info">
             Please register or login to order a pizza!
         </div>
-    @endif
+    @endauth
 </div>
 @endsection
