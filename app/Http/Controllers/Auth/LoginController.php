@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,6 +27,28 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+
+    /**
+     * Once the user is authenticated
+     * @return \Illuminate\Support\Facades\Redirect
+     */
+    public function authenticated() {
+        if (Auth::user()->hasRole(['superadmin', 'admin'])) {
+            return redirect('/dashboard');
+        } else if (Auth::user()->hasRole('customer')) {
+            return redirect('/');
+        } else if (Auth::user()->hasRole('employee')) {
+            return redirect('/dashboard/orders');
+        }
+    }
+
+    /**
+     * Override username to use username instead of email for login
+     * @return string
+     */
+    public function username() {
+        return 'username';
+    }
 
     /**
      * Create a new controller instance.

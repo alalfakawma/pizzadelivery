@@ -4,7 +4,7 @@
 <div class="panel">
     <div class="panel-heading">
         <div class="title is-6 has-text-primary">
-            Welcome!
+            Welcome! {{ (Auth::check()) ? Auth::user()->username : "" }}
         </div>
     </div>
     @if (Auth::check())
