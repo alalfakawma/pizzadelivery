@@ -19,7 +19,7 @@ return [
         ],
         'customer' => [
             'profile' => 'r,u',
-            'orders' => 'c'
+            'orders' => 'c,d'
         ],
     ],
     'permissions_map' => [
