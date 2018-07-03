@@ -17,6 +17,9 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->string('note')->nullable();
+            $table->string('payment');
+            $table->string('type');
+            $table->dateTime('time');
             $table->timestamps();
 
             $table->foreign('customer_id')
