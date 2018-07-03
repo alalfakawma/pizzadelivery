@@ -20,7 +20,7 @@ Route::prefix('/dashboard')->middleware('role:superadmin|admin|employee')->group
 		});
 		Route::prefix('/user-control-area')->group(function() {
 			Route::get('/users', 'DashboardController@users')->name('dashboard.uca.users');
-			Route::prefix('/access-controls')->group(function() {
+			Route::prefix('/access-controls')->middleware('role:superadmin')->group(function() {
 				Route::get('/roles', 'DashboardController@roles')->name('dashboard.uca.ac.roles');
 				Route::get('/permissions', 'DashboardController@permissions')->name('dashboard.uca.ac.permissions');
 			});

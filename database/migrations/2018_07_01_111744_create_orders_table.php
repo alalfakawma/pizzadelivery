@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('note')->nullable();
             $table->string('payment');
             $table->string('type');
-            $table->dateTime('time');
+            $table->dateTime('time')->nullable();
             $table->timestamps();
 
             $table->foreign('customer_id')

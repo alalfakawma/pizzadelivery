@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDiscountCodesAvailabilityTable extends Migration
+class CreateToppingsAppliedTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateDiscountCodesAvailabilityTable extends Migration
      */
     public function up()
     {
-        Schema::create('discount_codes_availability', function (Blueprint $table) {
+        Schema::create('toppings_applied', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pizza_id')->unsigned()->nullable();
-            $table->integer('discount_code_id')->unsigned();
+            $table->integer('order_items_id')->unsigned();
+            $table->integer('topping_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('pizza_id')
+            $table->foreign('order_items_id')
                     ->references('id')
-                    ->on('pizzas')
+                    ->on('order_items')
                     ->onDelete('cascade');
-            $table->foreign('discount_code_id')
+            $table->foreign('topping_id')
                     ->references('id')
-                    ->on('discount_codes')
+                    ->on('toppings')
                     ->onDelete('cascade');
         });
     }
@@ -37,6 +37,6 @@ class CreateDiscountCodesAvailabilityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('discount_codes_availability');
+        Schema::dropIfExists('toppings_applied');
     }
 }

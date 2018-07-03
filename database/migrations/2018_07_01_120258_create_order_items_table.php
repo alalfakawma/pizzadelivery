@@ -18,8 +18,8 @@ class CreateOrderItemsTable extends Migration
             $table->integer('order_id')->unsigned();
             $table->integer('pizza_id')->unsigned();
             $table->integer('size_id')->unsigned();
-            $table->integer('topping_id')->unsigned();
-            $table->integer('discount_code_id')->unsigned();
+            $table->integer('topping_id')->unsigned()->nullable();
+            $table->integer('discount_code_id')->unsigned()->nullable();
             $table->integer('quantity')->unsigned();
             $table->integer('total');
             $table->timestamps();

@@ -19,7 +19,8 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function orders() {
-    	return view('dashboard.orders');
+        $orders = \App\Order::all();
+    	return view('dashboard.orders')->with('orders', $orders);
     }
 
     /**
