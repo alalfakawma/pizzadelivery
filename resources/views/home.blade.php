@@ -1,28 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-
-                    <form action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <button class="button is-danger is-small" type="submit">logout</button>
-                    </form>
-                </div>
-            </div>
+<div class="panel">
+    <div class="panel-heading">
+        <div class="title is-6 has-text-primary">
+            Welcome!
         </div>
     </div>
+    @if (Auth::check())
+        <div class="has-text-success">
+            You are logged in!
+        </div>
+    @else
+        <div class="has-text-info">
+            Please register or login to order a pizza!
+        </div>
+    @endif
 </div>
 @endsection
